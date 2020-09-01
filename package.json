@@ -1,0 +1,36 @@
+{
+  "name": "microprediction-logger",
+  "version": "1.0.0",
+  "description": "A logger of stream data from Microprediction.org",
+  "main": "index.js",
+  "scripts": {
+    "build-dist": "rm -rf dist dist.zip && webpack --config webpack.config.js && zip -r dist.zip dist/",
+    "build": "npm run build-dist && aws s3 cp dist.zip s3://microprediction-lambda/logger.zip && aws lambda update-function-code --function-name stream-logger --s3-bucket microprediction-lambda --s3-key logger.zip --publish"
+  },
+  "keywords": [],
+  "author": "Rusty Conover <rusty@conover.me>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/async": "^3.2.3",
+    "@types/aws-lambda": "^8.10.57",
+    "@types/lodash": "^4.14.160",
+    "async": "^3.2.0",
+    "aws-sdk": "^2.739.0",
+    "bent": "^7.3.10",
+    "builtin-modules": "^3.1.0",
+    "lodash": "^4.17.20",
+    "microprediction": "^1.0.5",
+    "moment": "^2.27.0"
+  },
+  "devDependencies": {
+    "mocha": "^8.0.1",
+    "terser-webpack-plugin": "^3.0.6",
+    "ts-loader": "^7.0.5",
+    "ts-node": "^8.10.2",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.5",
+    "webpack": "^4.44.1",
+    "webpack-bundle-analyzer": "^3.8.0",
+    "webpack-cli": "^3.3.12"
+  }
+}
