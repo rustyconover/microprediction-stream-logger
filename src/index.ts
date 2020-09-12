@@ -30,7 +30,7 @@ async function getStreams() {
     hash.update(stream);
     const d = hash.digest("base64").replace(/\//g, "_");
 
-    const k = `${d}/${moment().format("YYYYMMDD-hhmmss")}`;
+    const k = `${d}/${moment().format("YYYYMMDD-HHmmss")}`;
 
     // Since the stream is comprised of doubles, lets store
     // them in binary to save on space.
