@@ -4,7 +4,8 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   entry: {
-    Puller: path.resolve(__dirname, "src/index.ts")
+    Puller: path.resolve(__dirname, "src/index.ts"),
+    LeaderboardPuller: path.resolve(__dirname, "src/log-leaderboards.ts"),
   },
   ///  devtool: "inline-source-map",
   mode: "production",

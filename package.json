@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build-dist": "rm -rf dist dist.zip && webpack --config webpack.config.js && zip -r dist.zip dist/",
-    "build": "npm run build-dist && aws s3 cp dist.zip s3://microprediction-lambda/logger.zip && aws lambda update-function-code --function-name stream-logger --s3-bucket microprediction-lambda --s3-key logger.zip --publish"
+    "build": "npm run build-dist && aws s3 cp dist.zip s3://microprediction-lambda/logger.zip && aws lambda update-function-code --function-name stream-logger --s3-bucket microprediction-lambda --s3-key logger.zip --publish && aws lambda update-function-code --function-name leaderboard-logger --s3-bucket microprediction-lambda --s3-key logger.zip --publish"
   },
   "keywords": [],
   "author": "Rusty Conover <rusty@conover.me>",
@@ -24,11 +24,11 @@
   },
   "devDependencies": {
     "mocha": "^8.0.1",
-    "terser-webpack-plugin": "^3.0.6",
-    "ts-loader": "^7.0.5",
-    "ts-node": "^8.10.2",
+    "terser-webpack-plugin": "^4.2.2",
+    "ts-loader": "^8.0.4",
+    "ts-node": "^9.0.0",
     "tslib": "^2.0.0",
-    "typescript": "^3.9.5",
+    "typescript": "^4.0.3",
     "webpack": "^4.44.1",
     "webpack-bundle-analyzer": "^3.8.0",
     "webpack-cli": "^3.3.12"
